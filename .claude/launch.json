@@ -1,0 +1,17 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "static-preview",
+      "runtimeExecutable": "powershell",
+      "runtimeArgs": [
+        "-NoProfile",
+        "-File",
+        "C:\\Users\\Meyer\\AppData\\Local\\Temp\\claude\\C--Users-Meyer-OneDrive-Documents-GitHub-sentryxestates\\b321196d-e657-4367-b434-9fbaefc3d7d5\\scratchpad\\serve.ps1",
+        "C:\\Users\\Meyer\\OneDrive\\Documents\\GitHub\\sentryxestates",
+        "5500"
+      ],
+      "port": 5500
+    }
+  ]
+}

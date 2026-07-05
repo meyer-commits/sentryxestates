@@ -1,16 +1,17 @@
 /* ==========================================================================
-   SentryxEstates — Design System
+   Sentryx — Design System
    ========================================================================== */
 
 :root {
-  --navy-900: #081222;
-  --navy-800: #0c1c33;
-  --navy-700: #122747;
-  --navy-600: #1b3660;
-  --gold-500: #c9a86a;
-  --gold-600: #b3924f;
-  --gold-100: #f3ead9;
-  --cream: #f7f5f0;
+  --navy-900: #101226;
+  --navy-800: #171b3e;
+  --navy-700: #1c2b57;
+  --navy-600: #102052;
+  --gold-500: #e0a34d;
+  --gold-600: #c78d3c;
+  --gold-100: #f7e7cc;
+  --gold-gradient: linear-gradient(135deg, #eeb96d, #e0a34d);
+  --cream: #f7f3ea;
   --white: #ffffff;
   --gray-900: #1c2027;
   --gray-700: #454b55;
@@ -160,26 +161,24 @@ h3 { font-size: 1.3rem; }
   gap: 0.65rem;
   color: var(--white);
 }
-.brand__mark {
-  width: 38px;
-  height: 38px;
-  flex-shrink: 0;
-}
 .brand__text {
   font-family: var(--font-serif);
-  font-size: 1.25rem;
+  font-size: 1.55rem;
   font-weight: 600;
-  letter-spacing: 0.02em;
-  line-height: 1.1;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: var(--gold-500);
+  line-height: 1;
 }
 .brand__text span {
   display: block;
   font-family: var(--font-sans);
-  font-size: 0.62rem;
-  letter-spacing: 0.28em;
-  color: var(--gold-500);
-  font-weight: 600;
-  margin-top: 2px;
+  font-size: 0.6rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--gray-300);
+  font-weight: 500;
+  margin-top: 6px;
 }
 
 .nav {
@@ -242,6 +241,7 @@ h3 { font-size: 1.3rem; }
   opacity: 0.55;
   pointer-events: none;
 }
+.hero h1 { color: var(--white); }
 .hero__content {
   position: relative;
   max-width: 720px;
@@ -268,17 +268,85 @@ h3 { font-size: 1.3rem; }
   grid-template-columns: repeat(4, 1fr);
   gap: 2rem;
 }
+.stat-bar__item svg {
+  width: 26px;
+  height: 26px;
+  color: var(--gold-500);
+  margin-bottom: 0.8rem;
+}
 .stat-bar__item strong {
   display: block;
   font-family: var(--font-serif);
-  font-size: 2.1rem;
-  color: var(--gold-500);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 0.2rem;
 }
 .stat-bar__item span {
   font-size: 0.85rem;
   color: var(--gray-300);
-  letter-spacing: 0.03em;
+  letter-spacing: 0.02em;
 }
+
+/* ---------- Check list (service inclusions) ---------- */
+.check-list { margin-top: 1.2rem; }
+.check-list li {
+  display: flex;
+  gap: 0.65rem;
+  align-items: flex-start;
+  padding: 0.45rem 0;
+  color: var(--gray-700);
+  font-size: 0.94rem;
+}
+.check-list li svg {
+  width: 17px;
+  height: 17px;
+  color: var(--gold-600);
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+
+/* ---------- Service detail card (services page) ---------- */
+.service-detail {
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  gap: 1.6rem;
+  padding: 2.4rem 0;
+  border-bottom: 1px solid var(--gray-100);
+}
+.service-detail:last-child { border-bottom: none; }
+.service-detail__icon {
+  width: 64px;
+  height: 64px;
+  border-radius: var(--radius-md);
+  background: var(--navy-900);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.service-detail__icon svg { width: 30px; height: 30px; color: var(--gold-500); }
+.service-detail h3 { margin-bottom: 0.5rem; }
+.service-detail p { color: var(--gray-500); font-size: 0.98rem; max-width: 620px; }
+
+/* ---------- Coverage / service-area banner ---------- */
+.coverage-banner {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  background: var(--navy-900);
+  color: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 2.6rem 3rem;
+  flex-wrap: wrap;
+}
+.coverage-banner__icon {
+  width: 56px;
+  height: 56px;
+  flex-shrink: 0;
+  color: var(--gold-500);
+}
+.coverage-banner h3 { color: var(--white); margin-bottom: 0.4rem; }
+.coverage-banner p { color: var(--gray-300); font-size: 0.96rem; max-width: 560px; }
 
 /* ---------- Cards ---------- */
 .grid {
@@ -613,6 +681,7 @@ h3 { font-size: 1.3rem; }
   padding: 76px 0 64px;
   text-align: center;
 }
+.page-hero h1 { color: var(--white); }
 .page-hero .eyebrow { justify-content: center; color: var(--gold-500); }
 .page-hero p { color: var(--gray-300); max-width: 600px; margin: 1rem auto 0; }
 .breadcrumb {
@@ -682,4 +751,7 @@ h3 { font-size: 1.3rem; }
   .footer-grid { grid-template-columns: 1fr; }
   .footer-bottom { flex-direction: column; align-items: flex-start; }
   .cta-band__actions .btn { width: 100%; }
+  .service-detail { grid-template-columns: 1fr; }
+  .coverage-banner { padding: 2rem; text-align: center; flex-direction: column; }
+  .coverage-banner p { margin: 0 auto; }
 }
