@@ -277,7 +277,9 @@ h3 { font-size: 1.3rem; }
 /* ---------- Hero ---------- */
 .hero {
   position: relative;
-  background: linear-gradient(180deg, var(--navy-900) 0%, var(--navy-800) 65%, var(--navy-700) 100%);
+  background:
+    linear-gradient(180deg, rgba(16, 18, 38, 0.90) 0%, rgba(23, 27, 62, 0.84) 55%, rgba(28, 43, 87, 0.72) 100%),
+    url("/images/hero-estate.jpg") center 40% / cover no-repeat;
   color: var(--white);
   overflow: hidden;
   padding: 120px 0 100px;
