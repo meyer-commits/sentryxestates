@@ -3,7 +3,7 @@
 // variable to be set in the Vercel project (never hardcode it here).
 
 const TO_EMAIL = "team@sentryxestates.com";
-const FROM_EMAIL = "Sentryx Website <onboarding@resend.dev>";
+const FROM_EMAIL = "Sentryx Website <noreply@sentryxestates.com>";
 
 module.exports = async (req, res) => {
   if (req.method !== "POST") {
