@@ -11,7 +11,7 @@ module.exports = async (req, res) => {
     return;
   }
 
-  const { name, email, phone, address, message } = req.body || {};
+  const { name, email, phone, county, message } = req.body || {};
 
   if (!name || !email || !message) {
     res.status(400).json({ error: "Missing required fields" });
@@ -34,7 +34,7 @@ module.exports = async (req, res) => {
           `Name: ${name}`,
           `Email: ${email}`,
           `Phone: ${phone || "—"}`,
-          `Property Location: ${address || "—"}`,
+          `County: ${county || "—"}`,
           "",
           "Message:",
           message,
