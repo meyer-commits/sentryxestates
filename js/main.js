@@ -122,6 +122,44 @@
     }
   }
 
+  // County -> town cascading dropdown (contact.html)
+  var TOWNS_BY_COUNTY = {
+    "Rockland County": ["Clarkstown", "Haverstraw", "Orangetown", "Ramapo", "Stony Point"],
+    "Westchester County": [
+      "Bedford", "Cortlandt", "Eastchester", "Greenburgh", "Harrison", "Lewisboro",
+      "Mamaroneck", "Mount Pleasant", "New Castle", "North Castle", "North Salem",
+      "Ossining", "Pelham", "Pound Ridge", "Rye", "Scarsdale", "Somers", "Yorktown"
+    ],
+    "Orange County": [
+      "Blooming Grove", "Chester", "Cornwall", "Crawford", "Deerpark", "Goshen",
+      "Greenville", "Hamptonburgh", "Highlands", "Minisink", "Monroe", "Montgomery",
+      "Mount Hope", "New Windsor", "Newburgh", "Palm Tree", "Tuxedo", "Wallkill",
+      "Warwick", "Wawayanda", "Woodbury"
+    ]
+  };
+  var countySelect = document.querySelector("[data-county-select]");
+  var townshipField = document.querySelector("[data-township-field]");
+  var townshipSelect = document.querySelector("[data-township-select]");
+  if (countySelect && townshipField && townshipSelect) {
+    countySelect.addEventListener("change", function () {
+      var towns = TOWNS_BY_COUNTY[countySelect.value] || [];
+      townshipSelect.innerHTML = "";
+      var placeholder = document.createElement("option");
+      placeholder.value = "";
+      placeholder.textContent = "Select your town";
+      placeholder.disabled = true;
+      placeholder.selected = true;
+      townshipSelect.appendChild(placeholder);
+      towns.forEach(function (town) {
+        var opt = document.createElement("option");
+        opt.value = town;
+        opt.textContent = town;
+        townshipSelect.appendChild(opt);
+      });
+      townshipField.classList.add("is-visible");
+    });
+  }
+
   // Portfolio filter (portfolio.html)
   var filterBar = document.querySelector("[data-filter-bar]");
   var cards = document.querySelectorAll("[data-property]");

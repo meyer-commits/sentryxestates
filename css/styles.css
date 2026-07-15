@@ -660,6 +660,8 @@ h3 { font-size: 1.3rem; }
   border-color: var(--gold-500);
 }
 .form-field textarea { resize: vertical; min-height: 120px; }
+.form-field--town { display: none; }
+.form-field--town.is-visible { display: block; animation: fadeInPage 0.4s var(--ease-out-expo); }
 .form-note { font-size: 0.82rem; color: var(--gray-500); margin-top: 0.9rem; }
 .form-success {
   display: none;
