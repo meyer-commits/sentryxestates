@@ -141,17 +141,43 @@
     });
   }
 
-  // Contact form (client-side only — wire to a backend/Formspree endpoint before going live)
+  // Contact form — submits to the /api/contact serverless function
   var form = document.querySelector("[data-contact-form]");
   if (form) {
     form.addEventListener("submit", function (e) {
       e.preventDefault();
-      var success = document.querySelector("[data-form-success]");
-      if (success) {
-        success.classList.add("is-visible");
-        success.scrollIntoView({ behavior: "smooth", block: "center" });
+      var submitBtn = form.querySelector('button[type="submit"]');
+      var originalLabel = submitBtn ? submitBtn.textContent : "";
+      var payload = Object.fromEntries(new FormData(form).entries());
+
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = "Sending…";
       }
-      form.reset();
+
+      fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      })
+        .then(function (res) {
+          if (!res.ok) throw new Error("Request failed");
+          var success = document.querySelector("[data-form-success]");
+          if (success) {
+            success.classList.add("is-visible");
+            success.scrollIntoView({ behavior: "smooth", block: "center" });
+          }
+          form.reset();
+        })
+        .catch(function () {
+          alert("Something went wrong sending your message. Please call or email us directly.");
+        })
+        .finally(function () {
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.textContent = originalLabel;
+          }
+        });
     });
   }
 
