@@ -45,9 +45,7 @@ module.exports = async (req, res) => {
     if (!resendRes.ok) {
       const errText = await resendRes.text();
       console.error("Resend error:", errText);
-      // TEMPORARY: surfacing the upstream error to the browser for debugging.
-      // Remove the `detail` field once delivery is confirmed working.
-      res.status(502).json({ error: "Failed to send message", detail: errText });
+      res.status(502).json({ error: "Failed to send message" });
       return;
     }
 
