@@ -25,10 +25,13 @@
   }
 
   // Highlight active nav link
-  var currentPath = window.location.pathname.split("/").pop() || "index.html";
+  var currentPath = window.location.pathname;
+  if (currentPath !== "/" && currentPath.endsWith("/")) {
+    currentPath = currentPath.slice(0, -1);
+  }
   document.querySelectorAll("[data-nav] a").forEach(function (link) {
     var href = link.getAttribute("href");
-    if (href === currentPath || (currentPath === "" && href === "index.html")) {
+    if (href === currentPath) {
       link.classList.add("is-active");
     }
   });
